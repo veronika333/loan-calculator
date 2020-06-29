@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from 'react'
+import './normalize.css';
+import './skeleton.css';
+import Form from './components/Form';
+import {calculateTotal} from './helper';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    total: '',
+    amount: '',
+    term: ''
+  }
+  loanInformation = (amount, term) => {
+    const total = calculateTotal(amount, term);
+    this.setState({
+      amount,
+      total,
+      term
+    })
+  }
+  render() {
+    return (
+      <Fragment>
+      <h1>Loan Calculator</h1>
+      <div className="container">
+      <Form loanInformation={this.loanInformation} />
+      </div>
+      </Fragment>
+    );
+  }
 }
 
 export default App;
