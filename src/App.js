@@ -5,27 +5,39 @@ import Form from './components/Form';
 import {calculateTotal} from './helper';
 import Result from './components/Result';
 import Message from './components/Message';
+import Spinner from './components/Spinner';
 
 class App extends Component {
   state = {
     total: '',
     amount: '',
-    term: ''
+    term: '',
+    loading: false
   }
   loanInformation = (amount, term) => {
     const total = calculateTotal(amount, term);
     this.setState({
-      amount,
-      total,
-      term
-    })
+      loading: true
+    }, () => {
+      setTimeout(() => {
+      this.setState({
+        amount,
+        total,
+        term,
+        loading: false
+      })
+    }, 3000)
+  } 
+    )
   }
   render() {
-    const { amount, term, total } = this.state;
+    const { amount, term, total, loading } = this.state;
 // conditional rendering
 let component;
-if (total === '') {
+if (total === '' && !loading) {
 component = <Message />
+} else if ( loading ) {
+component = <Spinner />
 } else {
 component = <Result amount={amount} term={term} total={total} />
 }

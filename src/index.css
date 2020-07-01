@@ -23,6 +23,7 @@ h1 {
   margin-top: 2rem;
   font-weight: bold;
 }
+
 .container {
 background-color: white;
 padding: 1rem;
@@ -31,7 +32,7 @@ margin-top: 2rem;
 min-height: 80vh;
 }
 form, .messages {
-  padding: 2rem;
+  padding: 1rem;
   margin: 0 auto;
   max-width: 600px;
 }
@@ -45,5 +46,5 @@ input[type="submit"]:disabled {
 
 .result {
   border: 2px solid #00b0d7;
-  padding: 3rem 0;
+  padding: 1rem 0;
 }
