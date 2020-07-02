@@ -32,7 +32,7 @@ const {amount} = this.state;
         return (  
             <form onSubmit={this.handleSubmit}>
                 <div>
-        <label>Amount {this.props.loanInformation}</label>
+        <label>Amount</label>
                     <input 
                     onChange={this.handleChange}
                     name="amount" className="u-full-width" type="number" placeholder="Ex: 3000" />
